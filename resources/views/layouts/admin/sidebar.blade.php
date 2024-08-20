@@ -32,20 +32,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.question.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.question.index') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-list"></i>
-                            <p>
-                                Question
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{{ route('admin.category.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.category.index') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-tag"></i>
                             <p>
                                 Category
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.question.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.question.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>
+                                Question
                             </p>
                         </a>
                     </li>

@@ -28,8 +28,6 @@
 
                     {{ $deleteAll ?? '' }}
 
-                    {{ $restoreAll ?? '' }}
-
                 </div>
             </div>
             @if ($errors->any())

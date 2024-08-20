@@ -22,12 +22,7 @@
 
     <!-- Button Delete All -->
     <x-slot name="deleteAll">
-        {{-- @include('admin.level.deleteAll') --}}
-    </x-slot>
-
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.level.restoreAll') --}}
+        @include('admin.level.deleteAll')
     </x-slot>
 
     <!-- Search & Pagination -->

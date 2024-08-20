@@ -13,17 +13,16 @@ class QuestionImport implements ToModel, WithStartRow
     public function model(array $row)
     {
 
-        $category = Category::where('name', $row[2])->first();
+        $category = Category::where('name', $row[1])->first();
 
         if (!$category) {
             $category = Category::create([
                 'id' => Str::uuid(),
                 'name' => $row[1],
-                'img' => null,
             ]);
         }
 
-        $checkQuestion = Question::where('name', $row[1])->first();
+        $checkQuestion = Question::where('name', $row[2])->first();
 
         if ($checkQuestion) {
             $checkQuestion->update([
@@ -35,7 +34,7 @@ class QuestionImport implements ToModel, WithStartRow
 
         return new Question([
             'id' => Str::uuid(),
-            'name' => $row[1],
+            'name' => $row[2],
             'category_id' => $category->id ?? null,
         ]);
     }

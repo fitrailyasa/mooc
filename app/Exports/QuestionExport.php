@@ -22,8 +22,8 @@ class QuestionExport implements FromCollection, WithHeadings, WithStyles, Should
         foreach ($datas as $data) {
             $collection[] = [
                 'No' => $no++,
-                'Name' => $data->name ?? '',
                 'Category' => $data->category->name ?? '',
+                'Question' => $data->name ?? '',
             ];
         }
 
@@ -38,8 +38,8 @@ class QuestionExport implements FromCollection, WithHeadings, WithStyles, Should
             [''],
             [
                 'No',
-                'Name',
                 'Category',
+                'Question',
             ],
         ];
     }
