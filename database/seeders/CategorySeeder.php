@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
         $data = [
             [
                 'id' => Str::uuid(),
-                'name' => 'Operational',
+                'name' => 'Organisational',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

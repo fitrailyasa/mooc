@@ -16,7 +16,7 @@ class QuestionSeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'name' => 'Quest 1',
-                'category_id' => $this->Category('Operational'),
+                'category_id' => $this->Category('Organisational'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
