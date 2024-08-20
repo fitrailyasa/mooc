@@ -11,11 +11,11 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>{{ $datas }}</h3>
+                    <h3>{{ $users }}</h3>
 
-                    <p>{{ __('Data') }}</p>
+                    <p>{{ __('User') }}</p>
                 </div>
-                <a href="{{ route('admin.data.index') }}" class="small-box-footer">More info <i
+                <a href="{{ route('admin.user.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -37,11 +37,11 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>{{ $eras }}</h3>
+                    <h3>{{ $questions }}</h3>
 
-                    <p>{{ __('Era') }}</p>
+                    <p>{{ __('Question') }}</p>
                 </div>
-                <a href="{{ route('admin.era.index') }}" class="small-box-footer">More info <i
+                <a href="{{ route('admin.question.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -50,11 +50,11 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>{{ $franchises }}</h3>
+                    <h3>{{ $levels }}</h3>
 
-                    <p>{{ __('Franchise') }}</p>
+                    <p>{{ __('Level') }}</p>
                 </div>
-                <a href="{{ route('admin.franchise.index') }}" class="small-box-footer">More info <i
+                <a href="{{ route('admin.level.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
