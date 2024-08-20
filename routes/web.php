@@ -12,22 +12,9 @@ use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Admin\AdminDataController;
 use App\Http\Controllers\Auth\ProviderController;
-use App\Http\Controllers\Client\ClientFranchiseController;
-use App\Http\Controllers\Client\ClientEraController;
-use App\Http\Controllers\Client\ClientCategoryController;
 
 // CLIENT SIDE
 Route::get('/', [HomeController::class, 'index'])->name('beranda');
-
-Route::get('/search', [HomeController::class, 'search'])->name('search');
-Route::get('/era', [ClientEraController::class, 'index'])->name('era');
-Route::get('/era/{category}', [ClientEraController::class, 'show'])->name('era.show');
-Route::get('/era/{category}/{data}', [ClientEraController::class, 'category'])->name('era.category');
-Route::get('/franchise', [ClientFranchiseController::class, 'index'])->name('franchise');
-Route::get('/franchise/{category}', [ClientFranchiseController::class, 'show'])->name('franchise.show');
-Route::get('/franchise/{category}/{data}', [ClientFranchiseController::class, 'category'])->name('franchise.category');
-Route::get('/category', [ClientCategoryController::class, 'index'])->name('category');
-Route::get('/category/{data}', [ClientCategoryController::class, 'show'])->name('category.show');
 
 // OAuth
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('auth.redirect');
@@ -108,4 +95,3 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/{franchise}/{category}', [HomeController::class, 'show'])->name('beranda.show');

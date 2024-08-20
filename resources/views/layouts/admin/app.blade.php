@@ -52,56 +52,8 @@
         }
 
         .main-sidebar {
-            background-color: maroon;
+            background-color: rgb(13, 27, 92);
         }
-
-        /* .aktif {
-            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
-        }
-
-        .bg-info {
-            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
-        }
-
-        .bg-primary {
-            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
-        }
-
-        .bg-secondary {
-            background-image: linear-gradient(to top, #a3a3a3 0%, #707070 100%);
-        }
-
-        .bg-success {
-            background-image: linear-gradient(to top, #49e0b0 0%, #0ba360 100%);
-        }
-
-        .bg-warning {
-            background-image: linear-gradient(to top, #f8fa7c 0%, #ffc508 100%);
-        }
-
-        .bg-danger {
-            background-image: linear-gradient(to top, #fd704d 0%, #ff0844 100%);
-        }
-
-        .btn-primary {
-            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
-        }
-
-        .btn-secondary {
-            background-image: linear-gradient(to top, #a3a3a3 0%, #707070 100%);
-        }
-
-        .btn-success {
-            background-image: linear-gradient(to top, #49e0b0 0%, #0ba360 100%);
-        }
-
-        .btn-warning {
-            background-image: linear-gradient(to top, #f8fa7c 0%, #ffc508 100%);
-        }
-
-        .btn-danger {
-            background-image: linear-gradient(to top, #fd704d 0%, #ff0844 100%);
-        } */
     </style>
 
     {{ $style ?? '' }}
