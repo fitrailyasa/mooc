@@ -31,6 +31,33 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.question.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.question.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>
+                                Question
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.category.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.category.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tag"></i>
+                            <p>
+                                Category
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.level.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.level.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-list-ol"></i>
+                            <p>
+                                Level
+                            </p>
+                        </a>
+                    </li>
                 @endif
                 <li class="nav-item">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" hidden>

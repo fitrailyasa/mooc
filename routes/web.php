@@ -6,11 +6,9 @@ use App\Http\Middleware\Admin;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
-use App\Http\Controllers\Admin\AdminEraController;
-use App\Http\Controllers\Admin\AdminFranchiseController;
 use App\Http\Controllers\Admin\AdminCategoryController;
-use App\Http\Controllers\Admin\AdminTagController;
-use App\Http\Controllers\Admin\AdminDataController;
+use App\Http\Controllers\Admin\AdminQuestionController;
+use App\Http\Controllers\Admin\AdminLevelController;
 use App\Http\Controllers\Auth\ProviderController;
 
 // CLIENT SIDE
@@ -37,28 +35,6 @@ Route::middleware(['auth'])->group(function () {
     // CRUD USER
     Route::resource('user', AdminUserController::class)->only(['index', 'store', 'update', 'destroy']);
 
-    // CRUD ERA
-    Route::get('/era', [AdminEraController::class, 'index'])->name('era.index');
-    Route::post('/era', [AdminEraController::class, 'store'])->name('era.store');
-    Route::put('/era/{id}/update', [AdminEraController::class, 'update'])->name('era.update');
-    Route::delete('/era/{id}/destroy', [AdminEraController::class, 'destroy'])->name('era.destroy');
-    Route::post('/era/import', [AdminEraController::class, 'import'])->name('era.import');
-    Route::get('/era/export', [AdminEraController::class, 'export'])->name('era.export');
-    Route::delete('/era/deleteAll', [AdminEraController::class, 'destroyAll'])->name('era.destroyAll');
-    Route::put('/era/{id}/restore', [AdminEraController::class, 'restore'])->name('era.restore');
-    Route::put('/era/restoreAll', [AdminEraController::class, 'restoreAll'])->name('era.restoreAll');
-
-    // CRUD FRANCHISE
-    Route::get('/franchise', [AdminFranchiseController::class, 'index'])->name('franchise.index');
-    Route::post('/franchise', [AdminFranchiseController::class, 'store'])->name('franchise.store');
-    Route::put('/franchise/{id}/update', [AdminFranchiseController::class, 'update'])->name('franchise.update');
-    Route::delete('/franchise/{id}/destroy', [AdminFranchiseController::class, 'destroy'])->name('franchise.destroy');
-    Route::post('/franchise/import', [AdminFranchiseController::class, 'import'])->name('franchise.import');
-    Route::get('/franchise/export', [AdminFranchiseController::class, 'export'])->name('franchise.export');
-    Route::delete('/franchise/deleteAll', [AdminFranchiseController::class, 'destroyAll'])->name('franchise.destroyAll');
-    Route::put('/franchise/{id}/restore', [AdminFranchiseController::class, 'restore'])->name('franchise.restore');
-    Route::put('/franchise/restoreAll', [AdminFranchiseController::class, 'restoreAll'])->name('franchise.restoreAll');
-
     // CRUD CATEGORY
     Route::get('/category', [AdminCategoryController::class, 'index'])->name('category.index');
     Route::post('/category', [AdminCategoryController::class, 'store'])->name('category.store');
@@ -67,30 +43,24 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/category/import', [AdminCategoryController::class, 'import'])->name('category.import');
     Route::get('/category/export', [AdminCategoryController::class, 'export'])->name('category.export');
     Route::delete('/category/deleteAll', [AdminCategoryController::class, 'destroyAll'])->name('category.destroyAll');
-    Route::put('/category/{id}/restore', [AdminCategoryController::class, 'restore'])->name('category.restore');
-    Route::put('/category/restoreAll', [AdminCategoryController::class, 'restoreAll'])->name('category.restoreAll');
 
-    // CRUD TAG
-    Route::get('/tag', [AdminTagController::class, 'index'])->name('tag.index');
-    Route::post('/tag', [AdminTagController::class, 'store'])->name('tag.store');
-    Route::put('/tag/{id}/update', [AdminTagController::class, 'update'])->name('tag.update');
-    Route::delete('/tag/{id}/destroy', [AdminTagController::class, 'destroy'])->name('tag.destroy');
-    Route::post('/tag/import', [AdminTagController::class, 'import'])->name('tag.import');
-    Route::get('/tag/export', [AdminTagController::class, 'export'])->name('tag.export');
-    Route::delete('/tag/deleteAll', [AdminTagController::class, 'destroyAll'])->name('tag.destroyAll');
-    Route::put('/tag/{id}/restore', [AdminTagController::class, 'restore'])->name('tag.restore');
-    Route::put('/tag/restoreAll', [AdminTagController::class, 'restoreAll'])->name('tag.restoreAll');
+    // CRUD QUESTION
+    Route::get('/question', [AdminQuestionController::class, 'index'])->name('question.index');
+    Route::post('/question', [AdminQuestionController::class, 'store'])->name('question.store');
+    Route::put('/question/{id}/update', [AdminQuestionController::class, 'update'])->name('question.update');
+    Route::delete('/question/{id}/destroy', [AdminQuestionController::class, 'destroy'])->name('question.destroy');
+    Route::post('/question/import', [AdminQuestionController::class, 'import'])->name('question.import');
+    Route::get('/question/export', [AdminQuestionController::class, 'export'])->name('question.export');
+    Route::delete('/question/deleteAll', [AdminQuestionController::class, 'destroyAll'])->name('question.destroyAll');
 
-    // CRUD DATA
-    Route::get('/data', [AdminDataController::class, 'index'])->name('data.index');
-    Route::post('/data', [AdminDataController::class, 'store'])->name('data.store');
-    Route::put('/data/{id}/update', [AdminDataController::class, 'update'])->name('data.update');
-    Route::delete('/data/{id}/destroy', [AdminDataController::class, 'destroy'])->name('data.destroy');
-    Route::post('/data/import', [AdminDataController::class, 'import'])->name('data.import');
-    Route::get('/data/export', [AdminDataController::class, 'export'])->name('data.export');
-    Route::delete('/data/deleteAll', [AdminDataController::class, 'destroyAll'])->name('data.destroyAll');
-    Route::put('/data/{id}/restore', [AdminDataController::class, 'restore'])->name('data.restore');
-    Route::put('/data/restoreAll', [AdminDataController::class, 'restoreAll'])->name('data.restoreAll');
+    // CRUD LEVEL
+    Route::get('/level', [AdminLevelController::class, 'index'])->name('level.index');
+    Route::post('/level', [AdminLevelController::class, 'store'])->name('level.store');
+    Route::put('/level/{id}/update', [AdminLevelController::class, 'update'])->name('level.update');
+    Route::delete('/level/{id}/destroy', [AdminLevelController::class, 'destroy'])->name('level.destroy');
+    Route::post('/level/import', [AdminLevelController::class, 'import'])->name('level.import');
+    Route::get('/level/export', [AdminLevelController::class, 'export'])->name('level.export');
+    Route::delete('/level/deleteAll', [AdminLevelController::class, 'destroyAll'])->name('level.destroyAll');
   });
 });
 

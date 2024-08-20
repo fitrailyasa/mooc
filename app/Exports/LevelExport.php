@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Category;
+use App\Models\Level;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
@@ -10,23 +10,25 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 
-class CategoryExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoSize
+class LevelExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoSize
 {
     public function collection()
     {
         $collection = [];
 
         $no = 1;
-        $categories = Category::all();
+        $datas = Level::all();
 
-        foreach ($categories as $category) {
+        foreach ($datas as $data) {
             $collection[] = [
                 'No' => $no++,
-                'Name' => $category->name ?? '',
+                'Name' => $data->name ?? '',
+                'Code' => $data->code ?? '',
+                'Value' => $data->value ?? '',
             ];
         }
 
-        array_unshift($collection, ['Data Category'], ['']);
+        array_unshift($collection, ['Data Level'], ['']);
 
         return collect($collection);
     }
@@ -38,13 +40,15 @@ class CategoryExport implements FromCollection, WithHeadings, WithStyles, Should
             [
                 'No',
                 'Name',
-            ],
+                'Code',
+                'Value',
+            ]
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->mergeCells('A1:F1');
+        $sheet->mergeCells('A1:B1');
 
         $borderStyle = [
             'borders' => [
@@ -55,7 +59,7 @@ class CategoryExport implements FromCollection, WithHeadings, WithStyles, Should
             ],
         ];
 
-        $sheet->getStyle('A1:F' . $sheet->getHighestRow())
+        $sheet->getStyle('A1:B' . $sheet->getHighestRow())
             ->applyFromArray($borderStyle);
 
         return [

@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Category;
+use App\Models\Question;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
@@ -10,23 +10,24 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 
-class CategoryExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoSize
+class QuestionExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoSize
 {
     public function collection()
     {
         $collection = [];
 
         $no = 1;
-        $categories = Category::all();
+        $datas = Question::all();
 
-        foreach ($categories as $category) {
+        foreach ($datas as $data) {
             $collection[] = [
                 'No' => $no++,
-                'Name' => $category->name ?? '',
+                'Name' => $data->name ?? '',
+                'Category' => $data->category->name ?? '',
             ];
         }
 
-        array_unshift($collection, ['Data Category'], ['']);
+        array_unshift($collection, ['Data Question'], ['']);
 
         return collect($collection);
     }
@@ -38,6 +39,7 @@ class CategoryExport implements FromCollection, WithHeadings, WithStyles, Should
             [
                 'No',
                 'Name',
+                'Category',
             ],
         ];
     }

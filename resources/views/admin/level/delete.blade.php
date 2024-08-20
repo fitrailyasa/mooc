@@ -1,10 +1,10 @@
 <!-- Tombol untuk membuka modal -->
 <button role="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-    data-bs-target=".formDelete{{ $category->id }}"><i class="fas fa-trash"></i><span class="d-none d-sm-inline">
+    data-bs-target=".formDelete{{ $level->id }}"><i class="fas fa-trash"></i><span class="d-none d-sm-inline">
         {{ __('Delete') }}</span></button>
 
 <!-- Modal -->
-<div class="modal fade formDelete{{ $category->id }}" tabindex="-1" role="dialog" aria-hidden="">
+<div class="modal fade formDelete{{ $level->id }}" tabindex="-1" role="dialog" aria-hidden="">
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body">Are you sure you want to delete data?</div>
             <div class="modal-footer">
-                <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
+                <form action="{{ route('admin.level.destroy', $level->id) }}" method="POST">
                     @method('DELETE')
                     @csrf
                     <button type="button" class="btn btn-secondary"

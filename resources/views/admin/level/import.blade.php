@@ -7,11 +7,11 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
-                <form method="POST" action="{{ route('admin.category.import') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.level.import') }}" enctype="multipart/form-data">
             @endif
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="modalFormLabel">{{ __('Upload Category') }}</h5>
+                <h5 class="modal-title" id="modalFormLabel">{{ __('Upload level') }}</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -31,8 +31,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a class="btn btn-success" href="{{ asset('assets/template/category-template.xlsx') }}"
-                    download="category-template.xlsx">{{ __('Download Format') }}</a>
+                <a class="btn btn-success" href="{{ asset('assets/template/level-template.xlsx') }}"
+                    download="level-template.xlsx">{{ __('Download Format') }}</a>
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
             </div>
             </form>

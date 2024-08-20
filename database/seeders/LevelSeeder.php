@@ -2,47 +2,57 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\Level;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 
-class CategorySeeder extends Seeder
+class LevelSeeder extends Seeder
 {
     public function run(): void
     {
         $data = [
             [
                 'id' => Str::uuid(),
-                'name' => 'Operational',
+                'code' => 'NC',
+                'name' => 'Not Crucial',
+                'value' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'id' => Str::uuid(),
-                'name' => 'Technical',
+                'code' => 'LC',
+                'name' => 'Least Crucial',
+                'value' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'id' => Str::uuid(),
-                'name' => 'Social',
+                'code' => 'N',
+                'name' => 'Normal',
+                'value' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'id' => Str::uuid(),
-                'name' => 'Pedagogical',
+                'code' => 'C',
+                'name' => 'Crucial',
+                'value' => 4,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'id' => Str::uuid(),
-                'name' => 'Software',
+                'code' => 'MC',
+                'name' => 'Most Crucial',
+                'value' => 5,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
         ];
-        Category::query()->insert($data);
+        Level::query()->insert($data);
     }
 }

@@ -1,14 +1,14 @@
 <!-- Tombol untuk membuka modal -->
 <button role="button" class="btn btn-sm btn-warning mr-2" data-bs-toggle="modal"
-    data-bs-target=".formEdit{{ $category->id }}"><i class="fas fa-edit"></i><span class="d-none d-sm-inline">
+    data-bs-target=".formEdit{{ $question->id }}"><i class="fas fa-edit"></i><span class="d-none d-sm-inline">
         {{ __('Edit') }}</span></button>
 
 <!-- Modal -->
-<div class="modal fade formEdit{{ $category->id }}" tabindex="-1" role="dialog" aria-hidden="">
+<div class="modal fade formEdit{{ $question->id }}" tabindex="-1" role="dialog" aria-hidden="">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
-                <form method="POST" action="{{ route('admin.category.update', $category->id) }}"
+                <form method="POST" action="{{ route('admin.question.update', $question->id) }}"
                     enctype="multipart/form-data">
             @endif
             @csrf
@@ -26,11 +26,26 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Name') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="name" name="name" id="name"
-                                value="{{ old('name', $category->name) }}" required>
+                                placeholder="name" name="name" id="name" value="{{ old('name', $question->name) }}"
+                                required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}
                                 </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Category_id') }}</label>
+                            <select class="form-select @error('category_id') is-invalid @enderror" name="category_id"
+                                id="category_id">
+                                <option selected disabled>{{ __('Select Category') }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" @if ($category->id == $question->category_id) selected @endif>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>

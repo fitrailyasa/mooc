@@ -7,7 +7,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
-                <form method="POST" action="{{ route('admin.category.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.question.store') }}" enctype="multipart/form-data">
             @endif
             @csrf
             <div class="modal-header">
@@ -24,6 +24,21 @@
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="name" name="name" id="name" value="{{ old('name') }}" required>
                             @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Category_id') }}</label>
+                            <select class="form-select @error('category_id') is-invalid @enderror" name="category_id"
+                                id="category_id">
+                                <option selected disabled>{{ __('Select Category') }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

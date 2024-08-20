@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Franchise;
-use App\Models\Era;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\CategoryImport;
@@ -26,21 +24,17 @@ class AdminCategoryController extends Controller
 
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
-        $eras = Era::all();
-        $franchises = Franchise::all();
-
         if ($search) {
-            $categories = Category::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $categories = Category::where('name', 'like', "%{$search}%")
                 ->orWhere('desc', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $categories = Category::withTrashed()->paginate($validPerPage);
+            $categories = Category::paginate($validPerPage);
         }
 
         $counter = ($categories->currentPage() - 1) * $categories->perPage() + 1;
 
-        return view("admin.category.index", compact('categories', 'eras', 'franchises', 'counter', 'search', 'perPage'));
+        return view("admin.category.index", compact('categories', 'counter', 'search', 'perPage'));
     }
 
     public function import(Request $request)
@@ -53,7 +47,7 @@ class AdminCategoryController extends Controller
 
         Excel::import(new CategoryImport, $file);
 
-        return back()->with('alert', 'Berhasil Import Data Category!');
+        return back()->with('alert', 'Success Import Data Category!');
     }
 
     public function export()
@@ -65,15 +59,7 @@ class AdminCategoryController extends Controller
     {
         $category = Category::create($request->validated());
 
-        if ($request->hasFile('img')) {
-            $img = $request->file('img');
-            $file_name = $category->name . '_' . time() . '.' . $img->getClientOriginalExtension();
-            $category->img = $file_name;
-            $category->update();
-            $img->move('../public/assets/img/', $file_name);
-        }
-
-        return back()->with('alert', 'Berhasil Tambah Data Category!');
+        return back()->with('alert', 'Success Create Data Category!');
     }
 
     public function update(CategoryRequest $request, $id)
@@ -81,38 +67,18 @@ class AdminCategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->update($request->validated());
 
-        if ($request->hasFile('img')) {
-            $img = $request->file('img');
-            $file_name = $category->name . '_' . time() . '.' . $img->getClientOriginalExtension();
-            $category->img = $file_name;
-            $category->update();
-            $img->move('../public/assets/img/', $file_name);
-        }
-
-        return back()->with('alert', 'Berhasil Edit Data Category!');
+        return back()->with('alert', 'Success Edit Data Category!');
     }
 
     public function destroy($id)
     {
         Category::findOrFail($id)->delete();
-        return back()->with('alert', 'Berhasil Hapus Data Category!');
+        return back()->with('alert', 'Success Delete Data Category!');
     }
 
     public function destroyAll()
     {
-        Category::query()->delete();
-        return back()->with('alert', 'Berhasil Hapus Semua Category!');
-    }
-
-    public function restore($id)
-    {
-        Category::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Category!');
-    }
-
-    public function restoreAll()
-    {
-        Category::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Category!');
+        Category::truncate();
+        return back()->with('alert', 'Success Delete All Category!');
     }
 }

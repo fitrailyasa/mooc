@@ -2,23 +2,27 @@
 
 namespace App\Imports;
 
-use App\Models\Category;
+use App\Models\Level;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class CategoryImport implements ToModel, WithStartRow
+class LevelImport implements ToModel, WithStartRow
 {
     public function model(array $row)
     {
         $name = $row[1];
+        $code = $row[2];
+        $value = $row[3];
 
-        $checkCategory = Category::where('name', $name)->first();
+        $checkLevel = Level::where('name', $name)->first();
 
-        if (!$checkCategory) {
-            return new Category([
+        if (!$checkLevel) {
+            return new Level([
                 'id' => Str::uuid(),
                 'name' => $name,
+                'code' => $code,
+                'value' => $value,
             ]);
         }
 

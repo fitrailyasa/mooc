@@ -2,37 +2,37 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Category
+        Question
     </x-slot>
 
     <!-- Button Form Create -->
     <x-slot name="formCreate">
-        @include('admin.category.create')
+        @include('admin.question.create')
     </x-slot>
 
     <!-- Button Import -->
     <x-slot name="import">
-        @include('admin.category.import')
+        @include('admin.question.import')
     </x-slot>
 
     <!-- Button Export -->
     <x-slot name="export">
-        @include('admin.category.export')
+        @include('admin.question.export')
     </x-slot>
 
     <!-- Button Delete All -->
     <x-slot name="deleteAll">
-        {{-- @include('admin.category.deleteAll') --}}
+        {{-- @include('admin.question.deleteAll') --}}
     </x-slot>
 
     <!-- Button Restore All -->
     <x-slot name="restoreAll">
-        {{-- @include('admin.category.restoreAll') --}}
+        {{-- @include('admin.question.restoreAll') --}}
     </x-slot>
 
     <!-- Search & Pagination -->
     <x-slot name="search">
-        @include('admin.category.search')
+        @include('admin.question.search')
     </x-slot>
 
     <!-- Table -->
@@ -40,20 +40,22 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
+                <th>{{ __('Category') }}</th>
                 <th>{{ __('Name') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($questions as $question)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $category->name ?? '-' }}</td>
+                    <td>{{ $question->category->name ?? '-' }}</td>
+                    <td>{{ $question->name ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
-                            @include('admin.category.edit')
-                            @include('admin.category.delete')
+                            @include('admin.question.edit')
+                            @include('admin.question.delete')
                         @endif
                     </td>
                 </tr>
@@ -62,12 +64,13 @@
         <tfoot>
             <tr>
                 <th>{{ __('No') }}</th>
+                <th>{{ __('Category') }}</th>
                 <th>{{ __('Name') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
             <tr>
-                <th colspan="3">
-                    {{ $categories->appends(['perPage' => $perPage, 'search' => $search])->links() }}
+                <th colspan="4">
+                    {{ $questions->appends(['perPage' => $perPage, 'search' => $search])->links() }}
                 </th>
             </tr>
         </tfoot>

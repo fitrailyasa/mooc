@@ -7,7 +7,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
-                <form method="POST" action="{{ route('admin.category.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.level.store') }}" enctype="multipart/form-data">
             @endif
             @csrf
             <div class="modal-header">
@@ -22,8 +22,29 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Name') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="name" name="name" id="name" value="{{ old('name') }}" required>
+                                placeholder="Name" name="name" id="name" value="{{ old('name') }}"
+                                required>
                             @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Code') }}</label>
+                            <input type="text" class="form-control @error('code') is-invalid @enderror"
+                                placeholder="NM" name="code" id="code" value="{{ old('code') }}" required>
+                            @error('code')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Value') }}</label>
+                            <input type="number" class="form-control @error('value') is-invalid @enderror"
+                                placeholder="1" name="value" id="value" value="{{ old('value') }}" required>
+                            @error('value')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

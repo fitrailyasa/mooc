@@ -2,37 +2,37 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Category
+        Level
     </x-slot>
 
     <!-- Button Form Create -->
     <x-slot name="formCreate">
-        @include('admin.category.create')
+        @include('admin.level.create')
     </x-slot>
 
     <!-- Button Import -->
     <x-slot name="import">
-        @include('admin.category.import')
+        @include('admin.level.import')
     </x-slot>
 
     <!-- Button Export -->
     <x-slot name="export">
-        @include('admin.category.export')
+        @include('admin.level.export')
     </x-slot>
 
     <!-- Button Delete All -->
     <x-slot name="deleteAll">
-        {{-- @include('admin.category.deleteAll') --}}
+        {{-- @include('admin.level.deleteAll') --}}
     </x-slot>
 
     <!-- Button Restore All -->
     <x-slot name="restoreAll">
-        {{-- @include('admin.category.restoreAll') --}}
+        {{-- @include('admin.level.restoreAll') --}}
     </x-slot>
 
     <!-- Search & Pagination -->
     <x-slot name="search">
-        @include('admin.category.search')
+        @include('admin.level.search')
     </x-slot>
 
     <!-- Table -->
@@ -41,19 +41,23 @@
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Name') }}</th>
+                <th>{{ __('Code') }}</th>
+                <th>{{ __('Value') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($levels as $level)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $category->name ?? '-' }}</td>
+                    <td>{{ $level->name ?? '-' }}</td>
+                    <td>{{ $level->code ?? '-' }}</td>
+                    <td>{{ $level->value ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
-                            @include('admin.category.edit')
-                            @include('admin.category.delete')
+                            @include('admin.level.edit')
+                            @include('admin.level.delete')
                         @endif
                     </td>
                 </tr>
@@ -63,11 +67,13 @@
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Name') }}</th>
+                <th>{{ __('Code') }}</th>
+                <th>{{ __('Value') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
             <tr>
-                <th colspan="3">
-                    {{ $categories->appends(['perPage' => $perPage, 'search' => $search])->links() }}
+                <th colspan="5">
+                    {{ $levels->appends(['perPage' => $perPage, 'search' => $search])->links() }}
                 </th>
             </tr>
         </tfoot>
