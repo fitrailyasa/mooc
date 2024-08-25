@@ -36,7 +36,7 @@
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Category') }}</th>
-                <th>{{ __('Name') }}</th>
+                <th>{{ __('Question') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
         </thead>
@@ -60,7 +60,7 @@
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Category') }}</th>
-                <th>{{ __('Name') }}</th>
+                <th>{{ __('Question') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
             <tr>

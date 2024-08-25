@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Admin\AdminLevelController;
+use App\Http\Controllers\Admin\AdminInstrumentController;
+use App\Http\Controllers\Admin\AdminHistoryController;
 use App\Http\Controllers\Auth\ProviderController;
 
 // CLIENT SIDE
@@ -61,6 +63,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/level/import', [AdminLevelController::class, 'import'])->name('level.import');
     Route::get('/level/export', [AdminLevelController::class, 'export'])->name('level.export');
     Route::delete('/level/deleteAll', [AdminLevelController::class, 'destroyAll'])->name('level.destroyAll');
+
+    // INSTRUMENT
+    Route::get('/instrument', [AdminInstrumentController::class, 'index'])->name('instrument.index');
+    Route::get('/instrument/create', [AdminInstrumentController::class, 'create'])->name('instrument.create');
+    Route::post('/instrument/store', [AdminInstrumentController::class, 'store'])->name('instrument.store');
+
+    // HISTORY
+    Route::get('/history', [AdminHistoryController::class, 'index'])->name('history.index');
   });
 });
 

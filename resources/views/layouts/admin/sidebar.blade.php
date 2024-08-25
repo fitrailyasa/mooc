@@ -58,6 +58,24 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.instrument.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.instrument.index') || Request::routeIs('admin.instrument.create') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-calculator"></i>
+                            <p>
+                                Instrument
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.history.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.history.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-history"></i>
+                            <p>
+                                History
+                            </p>
+                        </a>
+                    </li>
                 @endif
                 <li class="nav-item">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" hidden>
