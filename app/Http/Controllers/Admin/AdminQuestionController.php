@@ -34,9 +34,7 @@ class AdminQuestionController extends Controller
             $questions = Question::paginate($validPerPage);
         }
 
-        $counter = ($questions->currentPage() - 1) * $questions->perPage() + 1;
-
-        return view("admin.question.index", compact('questions', 'categories', 'counter', 'search', 'perPage'));
+        return view("admin.question.index", compact('questions', 'categories', 'search', 'perPage'));
     }
 
     public function import(Request $request)

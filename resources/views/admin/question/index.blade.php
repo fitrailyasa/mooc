@@ -43,7 +43,7 @@
         <tbody>
             @foreach ($questions as $question)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $questions->firstItem() + $loop->index }}</td>
                     <td>{{ $question->category->name ?? '-' }}</td>
                     <td>{{ $question->name ?? '-' }}</td>
                     <td class="manage-row">

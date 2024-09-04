@@ -44,7 +44,7 @@
         <tbody>
             @foreach ($levels as $level)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $levels->firstItem() + $loop->index }}</td>
                     <td>{{ $level->name ?? '-' }}</td>
                     <td>{{ $level->code ?? '-' }}</td>
                     <td>{{ $level->value ?? '-' }}</td>

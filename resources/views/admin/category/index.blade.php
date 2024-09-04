@@ -42,7 +42,7 @@
         <tbody>
             @foreach ($categories as $category)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $categories->firstItem() + $loop->index }}</td>
                     <td>{{ $category->name ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')

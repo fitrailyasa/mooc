@@ -31,9 +31,7 @@ class AdminLevelController extends Controller
             $levels = Level::paginate($validPerPage);
         }
 
-        $counter = ($levels->currentPage() - 1) * $levels->perPage() + 1;
-
-        return view("admin.level.index", compact('levels', 'counter', 'search', 'perPage'));
+        return view("admin.level.index", compact('levels', 'search', 'perPage'));
     }
 
     public function import(Request $request)

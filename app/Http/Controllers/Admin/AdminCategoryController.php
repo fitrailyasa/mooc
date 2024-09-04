@@ -32,9 +32,7 @@ class AdminCategoryController extends Controller
             $categories = Category::paginate($validPerPage);
         }
 
-        $counter = ($categories->currentPage() - 1) * $categories->perPage() + 1;
-
-        return view("admin.category.index", compact('categories', 'counter', 'search', 'perPage'));
+        return view("admin.category.index", compact('categories', 'search', 'perPage'));
     }
 
     public function import(Request $request)

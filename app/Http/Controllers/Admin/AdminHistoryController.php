@@ -28,8 +28,6 @@ class AdminHistoryController extends Controller
             $instruments = Instrument::paginate($validPerPage);
         }
 
-        $counter = ($instruments->currentPage() - 1) * $instruments->perPage() + 1;
-
-        return view("admin.history.index", compact('instruments', 'counter', 'search', 'perPage'));
+        return view("admin.history.index", compact('instruments', 'search', 'perPage'));
     }
 }
