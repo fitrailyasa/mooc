@@ -5,6 +5,14 @@
         Dashboard
     </x-slot>
 
+    <style>
+        .chart-container {
+            width: 350px;
+            height: 350px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Content -->
     <div class="row">
         <div class="col-lg-3 col-6">
@@ -60,5 +68,40 @@
         </div>
         <!-- ./col -->
     </div>
+
+    <div class="d-flex justify-content-center mb-5">
+        <div class="chart-container">
+            <canvas id="statsChart"></canvas>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('statsChart').getContext('2d');
+
+        const statsChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Organisational', 'Technical', 'Social', 'Pedagogical', 'Software'],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [94.8, 95, 94.9, 95, 95],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100
+                    },
+                    pointLabels: {
+                        fontSize: 14
+                    }
+                }
+            }
+        });
+    </script>
 
 </x-admin-layout>

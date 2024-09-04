@@ -35,7 +35,14 @@ class AdminInstrumentController extends Controller
             'expertise' => 'required|string|max:255',
             'qualification' => 'required|string|max:255',
             'experience' => 'required|string|max:255',
+            // 'question' => 'required|array', // Ensure 'question' is an array
         ]);
+
+        // Encode the questions array as JSON
+        $questionsJson = json_encode($request->question);
+
+        // Calculate the average result from the questions
+        $averageResult = $this->calculateAverage($request->question);
 
         // dd($request->all());
 
@@ -50,8 +57,19 @@ class AdminInstrumentController extends Controller
             'expertise' => $request->expertise,
             'qualification' => $request->qualification,
             'experience' => $request->experience,
+            'questions' => $questionsJson, // Store the questions as JSON
+            'result' => $averageResult, // Store the average result
         ]);
 
         return redirect()->route('admin.history.index')->with('alert', 'Success!');
+    }
+
+    // Method to calculate the average of the questions' values
+    protected function calculateAverage(array $questions)
+    {
+        $total = array_sum($questions);
+        $count = count($questions);
+
+        return $count > 0 ? $total / $count : 0; // Calculate the average
     }
 }

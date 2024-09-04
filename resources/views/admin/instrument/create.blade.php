@@ -109,35 +109,6 @@
                     @enderror
                 </div>
             </div>
-            {{-- <div>
-                @php
-                    $groupedQuestions = $questions->groupBy('category.name');
-                @endphp
-
-                @foreach ($groupedQuestions as $categoryName => $questions)
-                    <h5 class="mb-3 text-center">{{ $categoryName }}</h5>
-                    @php
-                        $counter = 1;
-                    @endphp
-                    @foreach ($questions as $question)
-                        <p>{{ $counter }}. {{ $question->name }}
-                            <span>
-                                <select name="experience" id="experience"
-                                    class="form-select col-md-2 @error('experience') is-invalid @enderror">
-                                    <option selected disabled>{{ __('Select Values') }}</option>
-                                    @foreach ($levels as $level)
-                                        <option value="{{ $level->value }}">{{ $level->name }} =
-                                            {{ $level->value }}</option>
-                                    @endforeach
-                                </select>
-                            </span>
-                        </p>
-                        @php
-                            $counter++;
-                        @endphp
-                    @endforeach
-                @endforeach
-            </div> --}}
             <div>
                 @php
                     $groupedQuestions = $questions->groupBy('category.name');
@@ -149,25 +120,28 @@
                         $counter = 1;
                     @endphp
                     @foreach ($questions as $question)
-                    <div class="mt-3">
-                        <p>{{ $counter }}. {{ $question->name }}</p>
-                        @foreach ($levels as $level)
-                            <div class="form-check">
-                                <input class="form-check-input @error('experience') is-invalid @enderror"
-                                    type="radio" name="experience_{{ $question->id }}"
-                                    id="experience_{{ $question->id }}_{{ $level->value }}"
-                                    value="{{ $level->value }}">
-                                <label class="form-check-label"
-                                    for="experience_{{ $question->id }}_{{ $level->value }}">
-                                    {{ $level->name }} = {{ $level->value }}
-                                </label>
-                            </div>
-                        @endforeach
-                        @php
-                            $counter++;
-                        @endphp
+                        <div class="mt-3">
+                            <p>{{ $counter }}. {{ $question->name }}</p>
+                            @foreach ($levels as $level)
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input @error('question.' . $question->id) is-invalid @enderror"
+                                        type="radio" name="question[{{ $question->id }}]"
+                                        id="question_{{ $question->id }}_{{ $level->value }}"
+                                        value="{{ $level->value }}">
+                                    <label class="form-check-label"
+                                        for="question_{{ $question->id }}_{{ $level->value }}">
+                                        {{ $level->name }} = {{ $level->value }}
+                                    </label>
+                                </div>
+                            @endforeach
+                            @error('question.' . $question->id)
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                            @php
+                                $counter++;
+                            @endphp
                     @endforeach
-                    </div>
                 @endforeach
             </div>
 

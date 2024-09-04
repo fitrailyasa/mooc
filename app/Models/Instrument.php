@@ -11,5 +11,5 @@ class Instrument extends Model
 
     protected $table = 'instrument';
     public $timestamps = false;
-    protected $fillable = ['date', 'name', 'place', 'designation', 'organisation', 'gender', 'age', 'expertise', 'qualification', 'experience'];
+    protected $fillable = ['date', 'name', 'place', 'designation', 'organisation', 'gender', 'age', 'expertise', 'qualification', 'experience', 'question', 'result'];
 }

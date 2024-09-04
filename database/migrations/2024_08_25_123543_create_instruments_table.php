@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('expertise');
             $table->string('qualification');
             $table->string('experience');
+            $table->json('question')->nullable();
+            $table->string('result')->nullable();
             $table->timestamps();
         });
     }
