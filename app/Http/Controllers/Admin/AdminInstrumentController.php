@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Expertise;
 use App\Models\Instrument;
 use App\Models\Level;
+use App\Models\Qualification;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -18,9 +20,11 @@ class AdminInstrumentController extends Controller
 
     public function create()
     {
+        $expertises = Expertise::all();
         $levels = Level::all();
+        $qualifications = Qualification::all();
         $questions = Question::all();
-        return view('admin.instrument.create', compact('levels', 'questions'));
+        return view('admin.instrument.create', compact('expertises', 'qualifications', 'levels', 'questions'));
     }
 
     public function store(Request $request)

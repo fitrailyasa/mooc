@@ -73,10 +73,9 @@
                     <select name="expertise" id="expertise"
                         class="form-select @error('expertise') is-invalid @enderror">
                         <option selected disabled>{{ __('Select Expertise') }}</option>
-                        <option value="Academia">Academia</option>
-                        <option value="Research">Research</option>
-                        <option value="Software Development">Software Development</option>
-                        <option value="Administration">Administration</option>
+                        @foreach ($expertises as $expertise)
+                            <option value="{{ $expertise->name }}">{{ $expertise->name }}</option>
+                        @endforeach
                     </select>
                     @error('expertise')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -87,9 +86,9 @@
                     <select name="qualification" id="qualification"
                         class="form-select @error('qualification') is-invalid @enderror">
                         <option selected disabled>{{ __('Select Qualification') }}</option>
-                        <option value="Bachelor">Bachelor</option>
-                        <option value="Master">Master</option>
-                        <option value="Doctorate">Doctorate</option>
+                        @foreach ($qualifications as $qualification)
+                            <option value="{{ $qualification->name }}">{{ $qualification->name }}</option>
+                        @endforeach
                     </select>
                     @error('qualification')
                         <div class="invalid-feedback">{{ $message }}</div>
