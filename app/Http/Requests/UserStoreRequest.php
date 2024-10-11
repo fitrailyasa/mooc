@@ -20,7 +20,7 @@ class UserStoreRequest extends FormRequest
 
         // dd($db->getConnection()->getDatabaseName());
 
-        $id = $this->route('user');
+        $id = $this->route('id');
 
         return [
             'name' => 'required|max:100',

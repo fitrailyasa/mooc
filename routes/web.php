@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminExpertiseController;
+use App\Http\Controllers\Admin\AdminQualificationController;
 use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Admin\AdminLevelController;
 use App\Http\Controllers\Admin\AdminInstrumentController;
@@ -45,6 +47,24 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/category/import', [AdminCategoryController::class, 'import'])->name('category.import');
     Route::get('/category/export', [AdminCategoryController::class, 'export'])->name('category.export');
     Route::delete('/category/deleteAll', [AdminCategoryController::class, 'destroyAll'])->name('category.destroyAll');
+    
+    // CRUD EXPERTISE
+    Route::get('/expertise', [AdminExpertiseController::class, 'index'])->name('expertise.index');
+    Route::post('/expertise', [AdminExpertiseController::class, 'store'])->name('expertise.store');
+    Route::put('/expertise/{id}/update', [AdminExpertiseController::class, 'update'])->name('expertise.update');
+    Route::delete('/expertise/{id}/destroy', [AdminExpertiseController::class, 'destroy'])->name('expertise.destroy');
+    Route::post('/expertise/import', [AdminExpertiseController::class, 'import'])->name('expertise.import');
+    Route::get('/expertise/export', [AdminExpertiseController::class, 'export'])->name('expertise.export');
+    Route::delete('/expertise/deleteAll', [AdminExpertiseController::class, 'destroyAll'])->name('expertise.destroyAll');
+    
+    // CRUD QUALIFICATION
+    Route::get('/qualification', [AdminQualificationController::class, 'index'])->name('qualification.index');
+    Route::post('/qualification', [AdminQualificationController::class, 'store'])->name('qualification.store');
+    Route::put('/qualification/{id}/update', [AdminQualificationController::class, 'update'])->name('qualification.update');
+    Route::delete('/qualification/{id}/destroy', [AdminQualificationController::class, 'destroy'])->name('qualification.destroy');
+    Route::post('/qualification/import', [AdminQualificationController::class, 'import'])->name('qualification.import');
+    Route::get('/qualification/export', [AdminQualificationController::class, 'export'])->name('qualification.export');
+    Route::delete('/qualification/deleteAll', [AdminQualificationController::class, 'destroyAll'])->name('qualification.destroyAll');
 
     // CRUD QUESTION
     Route::get('/question', [AdminQuestionController::class, 'index'])->name('question.index');

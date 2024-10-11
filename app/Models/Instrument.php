@@ -9,7 +9,7 @@ class Instrument extends Model
 {
     use HasFactory;
 
-    protected $table = 'instrument';
+    protected $table = 'instruments';
     public $timestamps = false;
     protected $fillable = ['date', 'name', 'place', 'designation', 'organisation', 'gender', 'age', 'expertise', 'qualification', 'experience', 'question', 'result'];
 }

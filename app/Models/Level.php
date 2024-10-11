@@ -10,7 +10,7 @@ class Level extends Model
 {
     use HasFactory;
 
-    protected $table = 'level';
+    protected $table = 'levels';
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $fillable = ['id', 'name', 'code', 'value'];

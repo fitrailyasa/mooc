@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-admin-table>
 
     <!-- Title -->
     <x-slot name="title">
@@ -6,7 +6,7 @@
     </x-slot>
 
     <!-- Table -->
-    <table id="example1" class="table table-bordered table-striped">
+    <table id="" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
@@ -61,12 +61,8 @@
                 <th>{{ __('Qualification') }}</th>
                 <th>{{ __('Experience') }}</th>
             </tr>
-            <tr>
-                <th colspan="12">
-                    {{ $instruments->appends(['perPage' => $perPage, 'search' => $search])->links() }}
-                </th>
-            </tr>
         </tfoot>
     </table>
+    {{ $instruments->appends(['perPage' => $perPage, 'search' => $search])->links() }}
 
-</x-admin-layout>
+</x-admin-table>

@@ -2,27 +2,27 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Category
+        Expertise
     </x-slot>
 
     <!-- Button Form Create -->
     <x-slot name="formCreate">
-        @include('admin.category.create')
+        @include('admin.expertise.create')
     </x-slot>
 
     <!-- Button Import -->
     <x-slot name="import">
-        @include('admin.category.import')
+        @include('admin.expertise.import')
     </x-slot>
 
     <!-- Button Export -->
     <x-slot name="export">
-        @include('admin.category.export')
+        @include('admin.expertise.export')
     </x-slot>
 
     <!-- Button Delete All -->
     <x-slot name="deleteAll">
-        @include('admin.category.deleteAll')
+        @include('admin.expertise.deleteAll')
     </x-slot>
 
     <!-- Search & Pagination -->
@@ -40,15 +40,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($expertises as $expertise)
                 <tr>
-                    <td>{{ $categories->firstItem() + $loop->index }}</td>
-                    <td>{{ $category->name ?? '-' }}</td>
+                    <td>{{ $expertises->firstItem() + $loop->index }}</td>
+                    <td>{{ $expertise->name ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
-                            @include('admin.category.edit')
-                            @include('admin.category.delete')
+                            @include('admin.expertise.edit')
+                            @include('admin.expertise.delete')
                         @endif
                     </td>
                 </tr>
@@ -62,6 +62,6 @@
             </tr>
         </tfoot>
     </table>
-    {{ $categories->appends(['perPage' => $perPage, 'search' => $search])->links() }}
+    {{ $expertises->appends(['perPage' => $perPage, 'search' => $search])->links() }}
 
 </x-admin-table>

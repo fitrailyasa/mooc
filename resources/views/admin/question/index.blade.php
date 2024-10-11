@@ -27,7 +27,7 @@
 
     <!-- Search & Pagination -->
     <x-slot name="search">
-        @include('admin.question.search')
+        @include('layouts.admin.search')
     </x-slot>
 
     <!-- Table -->
@@ -63,12 +63,8 @@
                 <th>{{ __('Question') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
-            <tr>
-                <th colspan="4">
-                    {{ $questions->appends(['perPage' => $perPage, 'search' => $search])->links() }}
-                </th>
-            </tr>
         </tfoot>
     </table>
+    {{ $questions->appends(['perPage' => $perPage, 'search' => $search])->links() }}
 
 </x-admin-table>

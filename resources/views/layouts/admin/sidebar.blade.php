@@ -43,7 +43,7 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.question.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.question.index') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-list"></i>
+                            <i class="nav-icon fas fa-question-circle"></i>
                             <p>
                                 Question
                             </p>
@@ -52,16 +52,34 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.level.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.level.index') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-list-ol"></i>
+                            <i class="nav-icon fas fa-layer-group"></i>
                             <p>
                                 Level
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('admin.expertise.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.expertise.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-lightbulb"></i>
+                            <p>
+                                Expertise
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.qualification.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.qualification.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                Qualification
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.instrument.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.instrument.index') || Request::routeIs('admin.instrument.create') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-calculator"></i>
+                            <i class="nav-icon fas fa-toolbox"></i>
                             <p>
                                 Instrument
                             </p>
