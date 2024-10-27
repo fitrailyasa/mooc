@@ -50,7 +50,7 @@ class AdminInstrumentController extends Controller
         // Calculate the average result from the questions
         $averageResult = $this->calculateAverage($request->question);
 
-        // dd($request->all());
+        dd($request->all(), $questionsJson);
 
         Instrument::create([
             'questions' => $questionsJson, // Store the questions as JSON

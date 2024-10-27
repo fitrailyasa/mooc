@@ -50,6 +50,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('admin.question-result.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.question-result.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-question-circle"></i>
+                            <p>
+                                Question result
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.level.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.level.index') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-layer-group"></i>

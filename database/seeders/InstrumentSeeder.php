@@ -13,6 +13,6 @@ class InstrumentSeeder extends Seeder
      */
     public function run(): void
     {
-        // Instrument::factory(100)->create();
+        Instrument::factory(100)->create();
     }
 }

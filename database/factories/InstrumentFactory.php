@@ -18,17 +18,9 @@ class InstrumentFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(6, 100),
-            'question' => json_encode([
-                'q1' => $this->faker->numberBetween(70, 100),
-                'q2' => $this->faker->numberBetween(70, 100),
-                'q3' => $this->faker->numberBetween(70, 100),
-            ]),
+            'question_id' => $this->faker->numberBetween(1, 34),
 
-            'result' => json_encode([
-                'score' => $this->faker->numberBetween(70, 100),
-                'status' => $this->faker->randomElement(['Passed', 'Failed']),
-                'comments' => $this->faker->sentence(),
-            ]),
+            'result' => $this->faker->numberBetween(1, 5),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }

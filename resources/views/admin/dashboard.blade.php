@@ -69,6 +69,9 @@
         <!-- ./col -->
     </div>
 
+
+
+
     <div class="d-flex justify-content-center mb-5">
         <div class="chart-container">
             <canvas id="statsChart"></canvas>

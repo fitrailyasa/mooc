@@ -17,6 +17,10 @@ class AdminDashboardController extends Controller
         $questions = Question::all()->count();
         $levels = Level::all()->count();
 
+
+
+
+
         return view('admin.dashboard', compact('users', 'categories', 'questions', 'levels'));
     }
 }

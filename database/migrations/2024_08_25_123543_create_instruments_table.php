@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('instruments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->json('question')->nullable();
-            $table->string('result')->nullable();
+            $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
+            $table->integer('result')->nullable();
             $table->timestamps();
         });
     }

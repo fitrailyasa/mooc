@@ -17,7 +17,6 @@ class QuestionImport implements ToModel, WithStartRow
 
         if (!$category) {
             $category = Category::create([
-                'id' => Str::uuid(),
                 'name' => $row[1],
             ]);
         }
@@ -33,7 +32,6 @@ class QuestionImport implements ToModel, WithStartRow
         }
 
         return new Question([
-            'id' => Str::uuid(),
             'name' => $row[2],
             'category_id' => $category->id ?? null,
         ]);
