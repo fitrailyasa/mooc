@@ -53,7 +53,6 @@ class AdminInstrumentController extends Controller
         // dd($request->all());
 
         Instrument::create([
-            'date' => now(),
             'questions' => $questionsJson, // Store the questions as JSON
             'result' => $averageResult, // Store the average result
         ]);
