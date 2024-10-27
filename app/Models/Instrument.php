@@ -10,8 +10,8 @@ class Instrument extends Model
     use HasFactory;
 
     protected $table = 'instruments';
-    public $timestamps = false;
-    protected $fillable = ['user_id', 'question_id', 'result', 'created_at', 'updated_at'];
+    // public $timestamps = false;
+    protected $fillable = ['user_id', 'question_id', 'result'];
 
     public function user()
     {

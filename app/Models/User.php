@@ -72,4 +72,8 @@ class User extends Authenticatable
         // DB::setDefaultConnection(env('DB2_CONNECTION'));
     }
 
+    public function instruments()
+    {
+        return $this->hasMany(Instrument::class);
+    }
 }

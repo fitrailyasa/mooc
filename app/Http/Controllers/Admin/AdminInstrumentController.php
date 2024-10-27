@@ -44,18 +44,13 @@ class AdminInstrumentController extends Controller
             // 'question' => 'required|array', // Ensure 'question' is an array
         ]);
 
-        // Encode the questions array as JSON
-        $questionsJson = json_encode($request->question);
-
-        // Calculate the average result from the questions
-        $averageResult = $this->calculateAverage($request->question);
-
-        dd($request->all(), $questionsJson);
-
-        Instrument::create([
-            'questions' => $questionsJson, // Store the questions as JSON
-            'result' => $averageResult, // Store the average result
-        ]);
+        foreach ($request->question as $key => $value) {
+            Instrument::create([
+                'user_id' => Auth::user()->id,
+                'question_id' => $key,
+                'result' => $value,
+            ]);
+        }
 
         $user = Auth::user()->id;
 

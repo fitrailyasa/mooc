@@ -32,7 +32,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>{{ $categories }}</h3>
+                    <h3>{{ $categoriesCount }}</h3>
 
                     <p>{{ __('Category') }}</p>
                 </div>
@@ -78,15 +78,26 @@
         </div>
     </div>
     <script>
+        const catagories = @json($categoriesWithAvg);
+
+        let labels = [];
+        let data = [];
+
+        catagories.forEach(category => {
+            labels.push(category.name);
+            data.push(category.avg_result);
+        });
+
         const ctx = document.getElementById('statsChart').getContext('2d');
 
         const statsChart = new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: ['Organisational', 'Technical', 'Social', 'Pedagogical', 'Software'],
+                labels: labels,
+                // labels: ['Organisational', 'Technical', 'Social', 'Pedagogical', 'Software'],
                 datasets: [{
                     label: 'My First Dataset',
-                    data: [94.8, 95, 94.9, 95, 95],
+                    data: data,
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 2,

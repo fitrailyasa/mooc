@@ -29,21 +29,25 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($instruments as $instrument)
+            @foreach ($users as $user)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $instrument->created_at }}</td>
-                    <td>{{ $instrument->user->name }}</td>
-                    <td>{{ $instrument->user->place }}</td>
-                    <td>{{ $instrument->user->designation }}</td>
-                    <td>{{ $instrument->user->organisation }}</td>
-                    <td>{{ $instrument->user->gender }}</td>
-                    <td>{{ $instrument->user->age }}</td>
-                    <td>{{ $instrument->user->expertise }}</td>
-                    <td>{{ $instrument->user->qualification }}</td>
-                    <td>{{ $instrument->user->experience }}</td>
+                    <td>{{ $user->instruments[0]->created_at }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->place }}</td>
+                    <td>{{ $user->designation }}</td>
+                    <td>{{ $user->organisation }}</td>
+                    <td>{{ $user->gender }}</td>
+                    <td>{{ $user->age }}</td>
+                    <td>{{ $user->expertise }}</td>
+                    <td>{{ $user->qualification }}</td>
+                    <td>{{ $user->experience }}</td>
                     <td class="manage-row">
-                        @include('admin.instrument.show')
+                        @include('admin.history.show')
+                        {{--
+                        @foreach ($user->instruments as $instrument)
+                            {{ $instrument->result }}
+                        @endforeach --}}
                     </td>
                 </tr>
             @endforeach

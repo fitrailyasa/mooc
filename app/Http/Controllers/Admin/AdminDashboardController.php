@@ -13,14 +13,28 @@ class AdminDashboardController extends Controller
     public function index()
     {
         $users = User::all()->count();
-        $categories = Category::all()->count();
+        $categoriesCount = Category::all()->count();
         $questions = Question::all()->count();
         $levels = Level::all()->count();
 
+        $categoriesWithAvg = Category::all()->map(function ($category) {
+            $totalResults = 0;
+            $countResults = 0;
+
+            foreach ($category->questions as $question) {
+                foreach ($question->instruments as $instrument) {
+                    $totalResults += $instrument->result;
+                    $countResults++;
+                }
+            }
+            $category->avg_result = $countResults ? $totalResults / $countResults : 0;
+
+            return $category;
+        });
 
 
+        // dd($categoriesWithAvg);
 
-
-        return view('admin.dashboard', compact('users', 'categories', 'questions', 'levels'));
+        return view('admin.dashboard', compact('users', 'categoriesWithAvg', 'categoriesCount', 'questions', 'levels'));
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Instrument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminHistoryController extends Controller
 {
@@ -28,9 +30,15 @@ class AdminHistoryController extends Controller
             // $instruments = Instrument::paginate($validPerPage);
         }
 
-        $instruments = Instrument::all();
+        if (Auth::user()->role != 'admin') {
+            $users = User::with('instruments')->where('id', Auth::user()->id)->whereHas('instruments')->get();
+        } else {
+            $users = User::with('instruments')->whereHas('instruments')->get();
+        }
 
-        return view("admin.history.index", compact('instruments', 'search', 'perPage'));
+        // $instruments = Instrument::all();
+
+        return view("admin.history.index", compact('users', 'search', 'perPage'));
     }
 
     public function destroyAll()
