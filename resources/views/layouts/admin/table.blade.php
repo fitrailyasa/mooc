@@ -57,7 +57,6 @@
         <script>
             $(function() {
                 $("#example1").DataTable({
-                    "responsive": true,
                     "lengthChange": true,
                     "autoWidth": true,
                     "paging": true,
@@ -70,8 +69,8 @@
                             },
                         },
                         {
-                            extend: 'pdf',
-                            text: '<i class="fas fa-file-pdf"></i> PDF',
+                            extend: 'csv',
+                            text: '<i class="fas fa-file"></i> CSV',
                             className: 'btn btn-dark mb-3',
                             exportOptions: {
                                 columns: [':not(:last-child)']

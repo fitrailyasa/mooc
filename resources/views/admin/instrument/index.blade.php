@@ -6,10 +6,7 @@
     </x-slot>
 
     <div class="row">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic aliquid nihil tenetur placeat rem dignissimos
-            officia itaque eius ex cumque enim odio saepe veniam ipsa, laborum, at sapiente aperiam magni, optio
-            corrupti. Omnis porro at commodi provident veniam, nam necessitatibus quam praesentium tempore eligendi ut
-            illum consequuntur ipsum! Velit, ratione.</p>
+        <p>You are humbly requested to give your comments based on your experience by marking Not Crucial (=1) to Most Crucial (=5) mentioning that which challenge is most crucial for the implementation of MOOCSs for the localized environment of Indonesia. Moreover, if you feel that any challenge or issue is missing, please feel free to add that issue at the end of the list. Scale values assigned to each of the five responses areas.</p>
         <div class="col-md-4 col-sm-10 col-12 mx-auto">
             <table id="" class="table table-bordered table-striped">
                 <tr>
