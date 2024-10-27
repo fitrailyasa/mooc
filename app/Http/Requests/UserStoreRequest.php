@@ -34,23 +34,14 @@ class UserStoreRequest extends FormRequest
             'password' => 'required|min:8',
             'role' => 'required',
             'status' => 'required',
-            'expertise' => 'nullable|max:255',
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'name.required' => 'Nama tidak boleh kosong!',
-            'name.max' => 'Nama maksimal 100 karakter!',
-            'email.required' => 'Email tidak boleh kosong!',
-            'email.max' => 'Email maksimal 255 karakter!',
-            'email.unique' => 'Email sudah terdaftar!',
-            'no_hp.max' => 'No. HP maksimal 255 karakter!',
-            'password.required' => 'Kata sandi tidak boleh kosong!',
-            'password.min' => 'Kata sandi minimal 8 karakter!',
-            'role.required' => 'Role tidak boleh kosong!',
-            'status.required' => 'Status tidak boleh kosong!',
+            'place' => 'nullable|max:500',
+            'designation' => 'nullable|max:500',
+            'organisation' => 'nullable|max:500',
+            'gender' => 'nullable|in:Male,Female',
+            'age' => 'nullable|max:100',
+            'expertise' => 'nullable|max:100',
+            'qualification' => 'nullable|max:100',
+            'experience' => 'nullable|max:100',
         ];
     }
 }

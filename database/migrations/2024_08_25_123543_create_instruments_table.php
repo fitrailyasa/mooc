@@ -13,16 +13,7 @@ return new class extends Migration
     {
         Schema::create('instruments', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->string('name');
-            $table->string('place');
-            $table->string('designation');
-            $table->string('organisation');
-            $table->enum('gender', ['Male', 'Female']);
-            $table->string('age');
-            $table->string('expertise');
-            $table->string('qualification');
-            $table->string('experience');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->json('question')->nullable();
             $table->string('result')->nullable();
             $table->timestamps();

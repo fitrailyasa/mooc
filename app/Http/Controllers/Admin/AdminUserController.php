@@ -8,11 +8,17 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $request->validate([
+            'search' => 'nullable|string|max:255',
+            'perPage' => 'nullable|integer|in:10,50,100',
+        ]);
+
         $roles = [
             [
                 'id' => 'admin',
@@ -23,9 +29,22 @@ class AdminUserController extends Controller
                 'name' => 'User',
             ]
         ];
-        $users = User::all();
+        
         $expertises = Expertise::all();
-        return view('admin.user.index', compact('users', 'expertises', 'roles'));
+
+        $search = $request->input('search');
+        $perPage = (int) $request->input('perPage', 10);
+
+        $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
+
+        if ($search) {
+            $users = User::where('name', 'like', "%{$search}%")
+                ->paginate($validPerPage);
+        } else {
+            $users = User::paginate($validPerPage);
+        }
+
+        return view("admin.user.index", compact('users', 'roles', 'expertises', 'search', 'perPage'));
     }
 
     public function store(UserStoreRequest $request)

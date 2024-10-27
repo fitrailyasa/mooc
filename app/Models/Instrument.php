@@ -11,5 +11,10 @@ class Instrument extends Model
 
     protected $table = 'instruments';
     public $timestamps = false;
-    protected $fillable = ['date', 'name', 'place', 'designation', 'organisation', 'gender', 'age', 'expertise', 'qualification', 'experience', 'question', 'result'];
+    protected $fillable = ['user_id', 'question', 'result', 'created_at', 'updated_at'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

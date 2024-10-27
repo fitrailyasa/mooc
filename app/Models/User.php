@@ -30,7 +30,14 @@ class User extends Authenticatable
         'password',
         'role',
         'status',
+        'place',
+        'designation',
+        'organisation',
+        'gender',
+        'age',
         'expertise',
+        'qualification',
+        'experience',
         'provider',
         'provider_id',
         'provider_token',
@@ -64,4 +71,5 @@ class User extends Authenticatable
         DB::setDefaultConnection(env('DB_CONNECTION'));
         // DB::setDefaultConnection(env('DB2_CONNECTION'));
     }
+
 }

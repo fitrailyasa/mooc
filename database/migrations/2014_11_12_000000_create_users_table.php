@@ -21,7 +21,14 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('role')->nullable();
             $table->string('status')->nullable()->default('tidak aktif');
-            $table->string('expertise')->nullable();
+            $table->string('place')->nullable();
+            $table->string('designation')->nullable();
+            $table->string('organisation')->nullable();
+            $table->enum('gender', ['Male', 'Female'])->nullable()->default('Male');
+            $table->string('age')->nullable();;
+            $table->string('expertise')->nullable();;
+            $table->string('qualification')->nullable();;
+            $table->string('experience')->nullable();;
             $table->json('provider')->nullable();
             $table->json('provider_id')->nullable();
             $table->json('provider_token')->nullable();

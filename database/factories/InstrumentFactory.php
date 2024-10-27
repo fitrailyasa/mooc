@@ -17,16 +17,7 @@ class InstrumentFactory extends Factory
     public function definition(): array
     {
         return [
-            'date' => now(),
-            'name' => $this->faker->name(),
-            'place' => $this->faker->address(),
-            'designation' => $this->faker->sentence(),
-            'organisation' => $this->faker->sentence(),
-            'gender' => $this->faker->randomElement(['Male', 'Female']),
-            'age' => $this->faker->numberBetween(30, 60),
-            'expertise' => $this->faker->randomElement(['Academia', 'Research', 'Software Development', 'Administration']),
-            'qualification' => $this->faker->randomElement(['Bachelor', 'Master', 'Doctorate']),
-            'experience' => $this->faker->randomElement(['Less than 5 years', '5 to 10 years', 'More than 10 years']),
+            'user_id' => $this->faker->numberBetween(6, 100),
             'question' => json_encode([
                 'q1' => $this->faker->numberBetween(70, 100),
                 'q2' => $this->faker->numberBetween(70, 100),
@@ -38,6 +29,7 @@ class InstrumentFactory extends Factory
                 'status' => $this->faker->randomElement(['Passed', 'Failed']),
                 'comments' => $this->faker->sentence(),
             ]),
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }

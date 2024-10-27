@@ -14,8 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
         $users = [
             [
                 'name' => 'Administrator',
@@ -64,5 +62,6 @@ class UserSeeder extends Seeder
             ],
         ];
         User::query()->insert($users);
+        User::factory(100)->create();
     }
 }

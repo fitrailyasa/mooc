@@ -11,7 +11,7 @@
     </x-slot>
 
     <!-- Table -->
-    <table id="example1" class="table table-bordered table-striped">
+    <table id="" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
@@ -26,7 +26,7 @@
         <tbody>
             @foreach ($users->where('email', '!=', 'super@admin.com') as $user)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $users->firstItem() + $loop->index }}</td>
                     <td>{{ $user->name ?? '-' }}</td>
                     <td class="d-none d-lg-table-cell">{{ $user->email ?? '-' }}</td>
                     <td class="d-none d-lg-table-cell">
@@ -65,5 +65,6 @@
             </tr>
         </tfoot>
     </table>
+    {{ $users->appends(['perPage' => $perPage, 'search' => $search])->links() }}
 
 </x-admin-table>

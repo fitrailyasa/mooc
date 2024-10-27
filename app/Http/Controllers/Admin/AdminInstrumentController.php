@@ -8,7 +8,9 @@ use App\Models\Instrument;
 use App\Models\Level;
 use App\Models\Qualification;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminInstrumentController extends Controller
 {
@@ -52,6 +54,13 @@ class AdminInstrumentController extends Controller
 
         Instrument::create([
             'date' => now(),
+            'questions' => $questionsJson, // Store the questions as JSON
+            'result' => $averageResult, // Store the average result
+        ]);
+
+        $user = Auth::user()->id;
+
+        User::find($user)->update([
             'name' => $request->name,
             'place' => $request->place,
             'designation' => $request->designation,
@@ -61,8 +70,6 @@ class AdminInstrumentController extends Controller
             'expertise' => $request->expertise,
             'qualification' => $request->qualification,
             'experience' => $request->experience,
-            'questions' => $questionsJson, // Store the questions as JSON
-            'result' => $averageResult, // Store the average result
         ]);
 
         return redirect()->route('admin.history.index')->with('alert', 'Success!');

@@ -30,16 +30,16 @@
                     <td class="manage-row">
                         @include('admin.instrument.show')
                     </td>
-                    <td>{{ $instrument->date }}</td>
-                    <td>{{ $instrument->name }}</td>
-                    <td>{{ $instrument->place }}</td>
-                    <td>{{ $instrument->designation }}</td>
-                    <td>{{ $instrument->organisation }}</td>
-                    <td>{{ $instrument->gender }}</td>
-                    <td>{{ $instrument->age }}</td>
-                    <td>{{ $instrument->expertise }}</td>
-                    <td>{{ $instrument->qualification }}</td>
-                    <td>{{ $instrument->experience }}</td>
+                    <td>{{ $instrument->created_at }}</td>
+                    <td>{{ $instrument->user->name }}</td>
+                    <td>{{ $instrument->user->place }}</td>
+                    <td>{{ $instrument->user->designation }}</td>
+                    <td>{{ $instrument->user->organisation }}</td>
+                    <td>{{ $instrument->user->gender }}</td>
+                    <td>{{ $instrument->user->age }}</td>
+                    <td>{{ $instrument->user->expertise }}</td>
+                    <td>{{ $instrument->user->qualification }}</td>
+                    <td>{{ $instrument->user->experience }}</td>
                 </tr>
             @endforeach
         </tbody>
