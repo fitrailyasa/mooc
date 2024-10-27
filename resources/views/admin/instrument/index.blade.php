@@ -24,7 +24,11 @@
                 @endforeach
             </table>
         </div>
-        <a href="{{ route('admin.instrument.create') }}" class="btn btn-primary">Start</a>
+        @if (auth()->user()->role == 'admin')
+            <a href="{{ route('admin.instrument.create') }}" class="btn btn-primary">Start</a>
+        @elseif(auth()->user()->role == 'user')
+            <a href="{{ route('user.instrument.create') }}" class="btn btn-primary">Start</a>
+        @endif
     </div>
 
 </x-admin-layout>

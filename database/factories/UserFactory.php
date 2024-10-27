@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'designation' => $this->faker->sentence(),
             'organisation' => $this->faker->sentence(),
             'gender' => $this->faker->randomElement(['Male', 'Female']),
-            'age' => $this->faker->numberBetween(30, 60),
+            'age' => $this->faker->randomElement(['30 to 40', '41 to 50', '51 to 60', '> 60']),
             'expertise' => $this->faker->randomElement(['Academia', 'Research', 'Software Development', 'Administration']),
             'qualification' => $this->faker->randomElement(['Bachelor', 'Master', 'Doctorate']),
             'experience' => $this->faker->randomElement(['Less than 5 years', '5 to 10 years', 'More than 10 years']),
