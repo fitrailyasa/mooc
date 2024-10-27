@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Expertise;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
@@ -23,7 +24,8 @@ class AdminUserController extends Controller
             ]
         ];
         $users = User::all();
-        return view('admin.user.index', compact('users', 'roles'));
+        $expertises = Expertise::all();
+        return view('admin.user.index', compact('users', 'expertises', 'roles'));
     }
 
     public function store(UserStoreRequest $request)

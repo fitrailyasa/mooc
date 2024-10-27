@@ -14,7 +14,7 @@ class CategoryRequest extends FormRequest
 
     public function rules(): array
     {
-        $id = $this->route('categories');
+        $id = $this->route('id');
 
         return [
             'name' => [

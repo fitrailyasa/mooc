@@ -18,12 +18,26 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="mb-2">
                             <label class="form-label">{{ __('Name') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="name" name="name" id="name" value="{{ old('name') }}" required>
                             @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-2">
+                            <label class="form-label">{{ __('Expertise') }}</label>
+                            <select class="form-select @error('expertise') is-invalid @enderror" name="expertise"
+                                id="expertise" required>
+                                @foreach ($expertises as $expertise)
+                                    <option value="{{ old('expertise', $expertise->name) }}">{{ $expertise->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('expertise')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

@@ -19,6 +19,7 @@
                 <th class="d-none d-lg-table-cell">{{ __('Email') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Role') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Status') }}</th>
+                <th>{{ __('Expertise') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
         </thead>
@@ -42,6 +43,7 @@
                             <span class="badge badge-danger">{{ $user->status }}</span>
                         @endif
                     </td>
+                    <td class="d-none d-lg-table-cell">{{ $user->expertise ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
                             @include('admin.user.edit')
@@ -58,6 +60,7 @@
                 <th class="d-none d-lg-table-cell">{{ __('Email') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Role') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Status') }}</th>
+                <th>{{ __('Expertise') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
         </tfoot>
