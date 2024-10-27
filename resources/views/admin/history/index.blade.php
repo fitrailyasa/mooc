@@ -5,8 +5,13 @@
         History
     </x-slot>
 
+    <!-- Button Delete All -->
+    <x-slot name="deleteAll">
+        @include('admin.history.deleteAll')
+    </x-slot>
+
     <!-- Table -->
-    <table id="" class="table table-bordered table-striped">
+    <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
@@ -60,6 +65,6 @@
             </tr>
         </tfoot>
     </table>
-    {{ $instruments->appends(['perPage' => $perPage, 'search' => $search])->links() }}
+    {{-- {{ $instruments->appends(['perPage' => $perPage, 'search' => $search])->links() }} --}}
 
 </x-admin-table>

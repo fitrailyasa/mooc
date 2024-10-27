@@ -21,13 +21,21 @@ class AdminHistoryController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $instruments = Instrument::where('name', 'like', "%{$search}%")
-                ->orWhere('desc', 'like', "%{$search}%")
-                ->paginate($validPerPage);
+            // $instruments = Instrument::where('name', 'like', "%{$search}%")
+            //     ->orWhere('desc', 'like', "%{$search}%")
+            //     ->paginate($validPerPage);
         } else {
-            $instruments = Instrument::paginate($validPerPage);
+            // $instruments = Instrument::paginate($validPerPage);
         }
 
+        $instruments = Instrument::all();
+
         return view("admin.history.index", compact('instruments', 'search', 'perPage'));
+    }
+
+    public function destroyAll()
+    {
+        Instrument::truncate();
+        return back()->with('alert', 'Success Delete All History!');
     }
 }
