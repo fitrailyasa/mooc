@@ -94,6 +94,34 @@
                             </p>
                         </a>
                     </li>
+                @elseif (auth()->user()->role == 'user')
+                    <li class="nav-item">
+                        <a href="{{ route('user.dashboard') }}"
+                            class="nav-link text-white {{ Request::routeIs('user.dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('user.instrument.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('user.instrument.index') || Request::routeIs('user.instrument.create') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-toolbox"></i>
+                            <p>
+                                Instrument
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('user.history.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('user.history.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-history"></i>
+                            <p>
+                                History
+                            </p>
+                        </a>
+                    </li>
                 @endif
                 <li class="nav-item">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" hidden>

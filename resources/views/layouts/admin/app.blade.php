@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin - {{ $title ?? '' }}</title>
+    <title>MOOC - {{ $title ?? '' }}</title>
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;400i;700&display=swap">
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Admin</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item active">{{ $title ?? '' }}</li>
                             </ol>
                         </div>

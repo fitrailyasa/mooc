@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\User;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
@@ -47,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/category/import', [AdminCategoryController::class, 'import'])->name('category.import');
     Route::get('/category/export', [AdminCategoryController::class, 'export'])->name('category.export');
     Route::delete('/category/deleteAll', [AdminCategoryController::class, 'destroyAll'])->name('category.destroyAll');
-    
+
     // CRUD EXPERTISE
     Route::get('/expertise', [AdminExpertiseController::class, 'index'])->name('expertise.index');
     Route::post('/expertise', [AdminExpertiseController::class, 'store'])->name('expertise.store');
@@ -56,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/expertise/import', [AdminExpertiseController::class, 'import'])->name('expertise.import');
     Route::get('/expertise/export', [AdminExpertiseController::class, 'export'])->name('expertise.export');
     Route::delete('/expertise/deleteAll', [AdminExpertiseController::class, 'destroyAll'])->name('expertise.destroyAll');
-    
+
     // CRUD QUALIFICATION
     Route::get('/qualification', [AdminQualificationController::class, 'index'])->name('qualification.index');
     Route::post('/qualification', [AdminQualificationController::class, 'store'])->name('qualification.store');
@@ -83,6 +84,20 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/level/import', [AdminLevelController::class, 'import'])->name('level.import');
     Route::get('/level/export', [AdminLevelController::class, 'export'])->name('level.export');
     Route::delete('/level/deleteAll', [AdminLevelController::class, 'destroyAll'])->name('level.destroyAll');
+
+    // INSTRUMENT
+    Route::get('/instrument', [AdminInstrumentController::class, 'index'])->name('instrument.index');
+    Route::get('/instrument/create', [AdminInstrumentController::class, 'create'])->name('instrument.create');
+    Route::post('/instrument/store', [AdminInstrumentController::class, 'store'])->name('instrument.store');
+
+    // HISTORY
+    Route::get('/history', [AdminHistoryController::class, 'index'])->name('history.index');
+  });
+
+  // CMS USER
+  Route::middleware([User::class])->name('user.')->prefix('user')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('beranda');
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     // INSTRUMENT
     Route::get('/instrument', [AdminInstrumentController::class, 'index'])->name('instrument.index');

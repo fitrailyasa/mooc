@@ -28,10 +28,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td class="manage-row">
-                        @if (auth()->user()->role == 'admin')
-                            <!-- show Buttons -->
-                            @include('admin.instrument.show')
-                        @endif
+                        @include('admin.instrument.show')
                     </td>
                     <td>{{ $instrument->date }}</td>
                     <td>{{ $instrument->name }}</td>
